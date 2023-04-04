@@ -12,12 +12,20 @@ jobs:
   mulelint:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Lint
-        run: mvn org.nuisto:mule-lint-maven-plugin:analyze-mule -X
-      - uses: actions/checkout@v3
+       - name: Set JDK 1.8
+         uses: actions/setup-java@v3
+         with:
+          distribution: 'temurin'
+          java-version: 8
+          
+          path: ~/.m2/repository
+          settings-path: ${{github.workspace}}   
+       - name: Run Lint
+         run: mvn org.nuisto:mule-lint-maven-plugin:analyze-mule -X
+       - uses: actions/checkout@v3
       
-      - uses: actions/upload-artifact@v2
-        with:
+       - uses: actions/upload-artifact@v2
+         with:
           name: mule-lint-results
           path: mule-lint-results.json
   test:
