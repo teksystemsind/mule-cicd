@@ -83,7 +83,7 @@ jobs:
           name: mule-lint-results
           path: mule-lint-results.json         
       - name: CloudHub Deployment
-        run: mvn clean deploy -DskipTests -DmuleDeploy -Dusername=${{secrets.ANYPOINT_USERNAME}} -Dpassword=${{secrets.ANYPOINT_PASSWORD}}# This is a basic workflow to help you get started with Actions using supti32acc
+        run: mvn clean deploy -DskipTests -DmuleDeploy -Dusername=${{secrets.ANYPOINT_USERNAME}} -Dpassword=${{secrets.ANYPOINT_PASSWORD}}
 
 
       
