@@ -43,6 +43,7 @@ jobs:
             name: mule-lint-results
             path: mule-lint-results.json
   test:
+    needs: mulelint
     runs-on: ubuntu-latest
     steps:
     - name: Checkout this repo
@@ -107,14 +108,10 @@ jobs:
           
           path: ~/.m2/repository
           settings-path: ${{github.workspace}}
-      - name: Run Lint
-        run: mvn org.nuisto:mule-lint-maven-plugin:analyze-mule
-      - uses: actions/checkout@v3
-      
-      - uses: actions/upload-artifact@v2
-        with:
-          name: mule-lint-results
-          path: mule-lint-results.json         
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: CloudHub Deployment
         run: mvn clean deploy -DskipTests -DmuleDeploy -Dusername=${{secrets.ANYPOINT_USERNAME}} -Dpassword=${{secrets.ANYPOINT_PASSWORD}}
 
