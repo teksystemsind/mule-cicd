@@ -42,9 +42,7 @@ jobs:
           with:
             name: mule-lint-results
             path: mule-lint-results.json
-  call-sonar-workflow:
-    needs: mulelint
-    uses: ./.github/workflows/sonar.yml          
+          
   test:
     needs: mulelint
     runs-on: ubuntu-latest
