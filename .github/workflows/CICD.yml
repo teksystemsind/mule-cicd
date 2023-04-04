@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Lint
-        run: mvn org.nuisto:mule-lint-maven-plugin:analyze-mule
+        run: mvn org.nuisto:mule-lint-maven-plugin:analyze-mule -X
       - uses: actions/checkout@v3
       
       - uses: actions/upload-artifact@v2
