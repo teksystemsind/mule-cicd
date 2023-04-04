@@ -112,6 +112,15 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+         path: ~/.m2/repository
+         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+         restore-keys: |
+          ${{ runner.os }}-maven-
       - name: CloudHub Deployment
         run: mvn clean deploy -DskipTests -DmuleDeploy -Dusername=${{secrets.ANYPOINT_USERNAME}} -Dpassword=${{secrets.ANYPOINT_PASSWORD}}
 
