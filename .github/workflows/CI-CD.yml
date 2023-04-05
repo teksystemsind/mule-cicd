@@ -7,6 +7,8 @@ on:
     branches: [ main ]
     
 jobs:
+  call-sonar-workflow:
+    uses: ./.github/workflows/sonar.yml
   mulelint:
       runs-on: ubuntu-latest
       steps:
@@ -85,12 +87,6 @@ jobs:
         java-version: 8
     - name: Build with Maven
       run: mvn -B package -DskipTests --file pom.xml
-    #- name: Stamp artifact file name with commit hash
-      #run: |
-        #artifactName1=$(ls target/*.jar | head -1)
-        #commitHash=$(git rev-parse --short "$GITHUB_SHA")
-        #artifactName2=$(ls target/*.jar | head -1 | sed "s/.jar/-$commitHash.jar/g")
-        #mv $artifactName1 $artifactName2
     - name: Upload artifact 
       uses: actions/upload-artifact@v3
       with:
