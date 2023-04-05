@@ -30,7 +30,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Build Final
-        run: mvn -B -DskipTests
+        run: mvn -B package -DskipTests --file pom.xml
   analyze:
     needs: build
     runs-on: ubuntu-latest
