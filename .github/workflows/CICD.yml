@@ -9,6 +9,8 @@ on:
     branches: [ develop ]
 
 jobs:
+  call-sonar-workflow:
+    uses: ./.github/workflows/sonar.yml
   mulelint:
       runs-on: ubuntu-latest
       steps:
