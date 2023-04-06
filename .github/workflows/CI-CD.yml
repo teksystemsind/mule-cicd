@@ -10,8 +10,7 @@ jobs:
  mulelint:
   runs-on: ubuntu-latest
   steps:
-   - uses: actions/checkout@v3
-   - uses: /teksystemsind/reusable-workflows/.github/workflows/set-environment.yml@master 
+   - uses: teksystemsind/reusable-workflows/.github/workflows/set-environment.yml@master 
    - name: Run Lint
      run: mvn org.nuisto:mule-lint-maven-plugin:analyze-mule
    - uses: actions/checkout@v3
