@@ -19,7 +19,7 @@ jobs:
         
  deploy:
     needs: build
-    uses: teksystemsind/mule-cicd/.github/workflows/deploy.yml@feature/Config
+    uses: teksystemsind/mule-cicd/.github/workflows/deploy.yml@master
     with:
       artifactName: $(ls *.jar | head -1)
     secrets:
