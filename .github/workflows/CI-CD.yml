@@ -10,7 +10,7 @@ jobs:
   call-sonar-workflow:
     uses: ./.github/workflows/sonar.yml
   mulelint:
-      runs-on: ubuntu-latest
+      runs-on: ${{ vars.RUNNER_SM_NAME }}
       steps:
         - uses: actions/checkout@v3
 
