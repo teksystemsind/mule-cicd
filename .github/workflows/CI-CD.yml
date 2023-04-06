@@ -32,7 +32,7 @@ jobs:
 
  mulelint:
   needs: set-environment
-  runs-on: ${{ vars.RUNNER_SM_NAME }}
+  runs-on: ubuntu-latest
   steps:
        - name: Run Lint
          run: mvn org.nuisto:mule-lint-maven-plugin:analyze-mule
