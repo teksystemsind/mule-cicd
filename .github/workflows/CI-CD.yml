@@ -5,7 +5,6 @@ on:
     branches: [ develop ]
   pull_request:
     branches: [ main ]
-    
 jobs:
  mulelint:
   uses: teksystemsind/reusable-workflows/.github/workflows/run-mule-lint.yml@master
