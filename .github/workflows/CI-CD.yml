@@ -1,13 +1,6 @@
 ---
 name: Build and Deploy to Sandbox
-on:
-  push:
-    branches:
-      - develop
-      - feature/**
-  pull_request:
-    branches:
-      - main
+on: push
 jobs:
   call-sonar-workflow:
     uses: ./.github/workflows/sonar.yml
