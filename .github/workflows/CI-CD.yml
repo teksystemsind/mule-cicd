@@ -8,17 +8,7 @@ on:
     
 jobs:
  mulelint:
-  runs-on: ubuntu-latest
-  steps:
-   - uses: teksystemsind/reusable-workflows/.github/workflows/set-environment.yml@master 
-   - name: Run Lint
-     run: mvn org.nuisto:mule-lint-maven-plugin:analyze-mule
-   - uses: actions/checkout@v3
-   - uses: actions/upload-artifact@v2
-     with:
-      name: mule-lint-results
-      path: mule-lint-results.json
-          
+  uses: teksystemsind/reusable-workflows/.github/workflows/set-environment.yml@master
  test:
   needs: mulelint
   runs-on: ubuntu-latest
