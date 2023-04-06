@@ -10,9 +10,11 @@ on:
    ANYPOINT_USERNAME:
     required: true
    ANYPOINT_PASSWORD:
-    requiredL: true
+    required: true
 
 jobs:
- Deploy to Sandbox:
+ deploy-to-cloudhub:
   runs-on: ubuntu-latest
-  run: mvn deploy -DskipTests -DmuleDeploy -Dmule.artifact=$artifactName -Danypoint.username="$ANYPOINT_USERNAME" -Danypoint.password="$ANYPOINT_PASSWORD"  
+  steps:
+   - name: Deploy to Cloudhub
+     run: mvn deploy -DskipTests -DmuleDeploy -Dmule.artifact=$artifactName -Danypoint.username="$ANYPOINT_USERNAME" -Danypoint.password="$ANYPOINT_PASSWORD"  
