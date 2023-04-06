@@ -1,4 +1,4 @@
-name: Build and Deploy to Sandbox
+name: CICD
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
     
 jobs:
- set-environment:
+ mulelint:
   runs-on: ubuntu-latest
   steps:
    - uses: actions/checkout@v3
@@ -28,19 +28,14 @@ jobs:
         distribution: 'temurin'
         java-version: 8
         path: ~/.m2/repository
-        settings-path: ${{github.workspace}}
-
- mulelint:
-  needs: set-environment
-  runs-on: ubuntu-latest
-  steps:
-       - name: Run Lint
-         run: mvn org.nuisto:mule-lint-maven-plugin:analyze-mule
-       - uses: actions/checkout@v3
-       - uses: actions/upload-artifact@v2
-         with:
-          name: mule-lint-results
-          path: mule-lint-results.json
+        settings-path: ${{github.workspace}}  
+   - name: Run Lint
+     run: mvn org.nuisto:mule-lint-maven-plugin:analyze-mule
+   - uses: actions/checkout@v3
+   - uses: actions/upload-artifact@v2
+     with:
+      name: mule-lint-results
+      path: mule-lint-results.json
           
  test:
   needs: mulelint
