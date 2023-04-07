@@ -19,9 +19,9 @@
 					
 						
 		<munit.version>2.3.13</munit.version>
-					  
+		<sonar.organization>teksystemsind</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>			  
 	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -30,6 +30,7 @@
 				<version>3.0.0</version>
 			</plugin>
 			<plugin>
+
       <groupId>org.nuisto</groupId>
       <artifactId>mule-lint-maven-plugin</artifactId>
       <version>0.5.1</version>
@@ -40,6 +41,8 @@
         <dictionary>words.txt</dictionary>
       </configuration>
     </plugin>
+
+
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
@@ -57,12 +60,6 @@
 						<region>us-east-2</region>
 						<workers>1</workers>
 						<objectStoreV2>true</objectStoreV2>
-											  
-																				
-				  
-												 
-				   
-											
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
 				</configuration>
@@ -107,17 +104,7 @@
 			<artifactId>mule-sockets-connector</artifactId>
 			<version>1.2.2</version>
 			<classifier>mule-plugin</classifier>
-		</dependency>
-										  
-																							
-			  
-										  
-																	 
-						   
-									   
-			   
-										
-						
+		</dependency>						
 		<dependency>
 			<groupId>com.mulesoft.munit</groupId>
 			<artifactId>munit-runner</artifactId>
